@@ -1,0 +1,67 @@
+@import url(reset.css);
+body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("https://www.portalmultiplix.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1VQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0b6b9108fac2bf018de7701e34090fc4667f1893/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lKTVRBeU5BWTZCa1ZVIiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--225ee2b8fdfbf7a081fbd41b5290b3252f18a8c0/IMPERADOR%20-%20cortado.jpg")
+            no-repeat center center fixed;
+        background-size: cover;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+      }
+
+      .form-container {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        padding: 2.5rem;
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .title-icon {
+        color: #709085;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .form-title {
+        color: #709085;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+
+      .btn-custom {
+        background-color: #709085;
+        border: none;
+        padding: 0.5rem 1rem;
+        font-size: 1.1rem;
+        transition: all 0.3s;
+      }
+
+      .btn-custom:hover {
+        background-color: #5a7a6f;
+        transform: translateY(-2px);
+      }
+
+      .form-control {
+        padding: 0.75rem 1rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .form-control:focus {
+        border-color: #709085;
+        box-shadow: 0 0 0 0.25rem rgba(112, 144, 133, 0.25);
+      }
+
+      .login-link {
+        color: #709085;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .login-link:hover {
+        text-decoration: underline;
+      }

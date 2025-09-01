@@ -1,0 +1,86 @@
+
+.login-section {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.login-form-col {
+    background-color: #f8f9fa;
+}
+
+
+.login-header {
+    padding-top: 1rem;
+}
+
+
+.login-icon {
+    color: #709085;
+}
+
+
+.login-form-container {
+    height: calc(100vh - 100px);
+}
+
+
+.login-form {
+    width: 23rem;
+}
+
+
+.login-title {
+    letter-spacing: 1px;
+    color: #709085;
+}
+
+
+.btn-login {
+    background-color: #709085;
+    border-color: #709085;
+    color: white;
+}
+
+.btn-login:hover {
+    background-color: #5d7870;
+    border-color: #5d7870;
+}
+
+
+.login-link {
+    color: #709085;
+    text-decoration: none;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+    color: #5d7870;
+}
+
+
+.login-image-col {
+    overflow: hidden;
+}
+
+
+.login-image {
+    object-fit: cover;
+    object-position: left;
+}
+
+.form-control:focus {
+    border-color: #709085;
+    box-shadow: 0 0 0 0.2rem rgba(112, 144, 133, 0.25);
+}
+
+
+@media (max-width: 991.98px) {
+    .login-form {
+        width: 100%;
+    }
+    
+    .login-form-container {
+        height: auto;
+        padding-bottom: 2rem;
+    }
+}

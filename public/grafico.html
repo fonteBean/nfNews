@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gráfico de Categorias de Notícias</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      #chart-container {
+        width: 400px;
+        height: 300px;
+        margin: auto;
+      }
+
+      canvas {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Notícias por Categoria</h2>
+    <div id="chart-container">
+      <canvas id="categoriasChart"></canvas>
+    </div>
+
+    <script>
+      async function gerarGrafico() {
+        try {
+          const response = await fetch("http://localhost:3000/noticias");
+          const noticias = await response.json();
+
+          const contagemCategorias = {};
+
+          noticias.forEach((noticia) => {
+            const categoria = noticia.categoria;
+            if (contagemCategorias[categoria]) {
+              contagemCategorias[categoria]++;
+            } else {
+              contagemCategorias[categoria] = 1;
+            }
+          });
+
+          const labels = Object.keys(contagemCategorias);
+          const dataValues = Object.values(contagemCategorias);
+
+          // Definindo cores fixas ou dinâmicas para cada categoria
+          const coresPorCategoria = {
+            Eventos: "rgba(255, 99, 132, 0.6)",
+            Cidade: "rgba(54, 162, 235, 0.6)",
+            Política: "rgba(255, 206, 86, 0.6)",
+            Esportes: "rgba(75, 192, 192, 0.6)",
+            Cultura: "rgba(153, 102, 255, 0.6)",
+            Outros: "rgba(201, 203, 207, 0.6)",
+          };
+
+          // Mapeia as cores conforme a categoria ou gera uma cor padrão se não estiver mapeada
+          const backgroundColors = labels.map(
+            (cat) => coresPorCategoria[cat] || "rgba(100, 100, 100, 0.6)"
+          );
+          const borderColors = labels.map(
+            (cat) =>
+              coresPorCategoria[cat].replace("0.6", "1") ||
+              "rgba(100, 100, 100, 1)"
+          );
+
+          const ctx = document
+            .getElementById("categoriasChart")
+            .getContext("2d");
+
+          new Chart(ctx, {
+            type: "bar",
+            data: {
+              labels: labels,
+              datasets: [
+                {
+                  label: "Quantidade de Notícias",
+                  data: dataValues,
+                  backgroundColor: backgroundColors,
+                  borderColor: borderColors,
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  precision: 0,
+                },
+              },
+              plugins: {
+                title: {
+                  display: true,
+                  text: "Distribuição das Notícias por Categoria",
+                },
+                legend: {
+                  display: false,
+                },
+              },
+            },
+          });
+        } catch (error) {
+          console.error("Erro ao carregar ou processar os dados:", error);
+        }
+      }
+
+      gerarGrafico();
+    </script>
+  </body>
+</html>

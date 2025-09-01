@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NFnews</title>
+    <link
+      rel="shortcut icon"
+      href="assets/images/logo.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+      defer
+    ></script>
+  </head>
+  <body>
+    <!-- CABECALHO -->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 shadow-sm">
+        <div class="container-fluid">
+          <!-- LOGO -->
+          <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="assets/images/logo.png" alt="Logo" style="height: 50px" />
+          </a>
+
+          <!-- BOTÃO TOGGLER (MOBILE) -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- ITENS DA NAVBAR -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- LINKS -->
+            <ul class="navbar-nav mx-auto text-center">
+              <li class="nav-item">
+                <a class="nav-link fs-5 text-uppercase" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-5 text-uppercase" href="crud.html"
+                  >Novidades</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-5 text-uppercase" href="favoritos.html"
+                  >Favoritos</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-5 text-uppercase" href="#">Esportes</a>
+              </li>
+            </ul>
+
+            <!-- BARRA DE PESQUISA -->
+            <form class="d-flex me-3" role="search">
+              <input
+                id="searchInput"
+                class="form-control me-2"
+                type="search"
+                placeholder="Buscar..."
+                aria-label="Search"
+              />
+              <button
+                id="searchButton"
+                class="btn btn-outline-light"
+                type="submit"
+              >
+                Buscar
+              </button>
+            </form>
+
+            <i id="userProfile" class="d-flex align-items-center">
+              <img
+                src="assets/images/userProfile.svg"
+                alt="Perfil"
+                style="height: 40px"
+                class="ms-2"
+              />
+            </i>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- CARROSEL -->
+    <div id="carouselExampleDark" class="carousel carousel-dark slide">
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner" id="carousel-inner"></div>
+
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleDark"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleDark"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <!-- CARDS -->
+    <main class="container my-5">
+      <div
+        class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"
+        id="cards-container"
+      ></div>
+    </main>
+
+    <!-- FORM -->
+    <div
+      class="container-fluid d-flex flex-column mb-3 gap-4 justify-content-around align-items-center mt-5"
+      id="banner"
+    >
+      <div class="banner-text text-center">
+        <span class="fs-2">Quer saber cada vez mais sobre Nova Friburgo?</span>
+        <h2 class="fs-2 text-success">Assine nossa Newsletter abaixo!</h2>
+      </div>
+      <div class="mb-3 row">
+        <label for="inputName" class="col-sm-2 col-form-label">Nome</label>
+        <div class="col-sm-10">
+          <input type="name" readonly class="form-control" id="inputName" />
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input type="email" readonly class="form-control" id="inputEmail" />
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <button type="button" class="btn btn-outline-success w-100">
+          ENVIAR
+        </button>
+      </div>
+    </div>
+
+    <!-- VIDEOS -->
+    <section
+      class="bg-black text-white py-5 border-top border-bottom border-secondary"
+    >
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="display-5 fw-bold text-success mb-3">NOSSOS VIDEOS</h2>
+          <div
+            class="mx-auto bg-success"
+            style="height: 3px; width: 80px"
+          ></div>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          <div class="col-lg-5 col-md-10">
+            <div class="ratio ratio-16x9 shadow-lg rounded-3 overflow-hidden">
+              <iframe
+                src="https://www.youtube.com/embed/d0dPghhGY3o"
+                title="YouTube video"
+                allowfullscreen
+                class="border border-2 border-success"
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="col-lg-5 col-md-10">
+            <div class="ratio ratio-16x9 shadow-lg rounded-3 overflow-hidden">
+              <iframe
+                src="https://www.youtube.com/embed/d0dPghhGY3o"
+                title="YouTube video"
+                allowfullscreen
+                class="border border-2 border-success"
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="col-12 text-center mt-4">
+            <button class="btn btn-outline-success px-4 py-2 fw-bold">
+              Ver Mais Vídeos
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="container-fluid py-5 bg-dark text-white">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-12 text-center">
+            <h2 class="display-5 fw-bold mb-4 text-success">
+              Sobre o Desenvolvedor
+            </h2>
+            <div
+              class="border-bottom border-3 border-primary mx-auto"
+              style="width: 100px"
+            ></div>
+          </div>
+        </div>
+
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6">
+            <div class="pe-lg-5">
+              <h3 class="fw-bold mb-4 text-success">Sobre mim</h3>
+              <p class="lead mb-4">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit
+                eius perspiciatis ab id rem laudantium dolorem nemo quis optio.
+                Nam, assumenda libero nostrum alias voluptates fugiat
+                praesentium consectetur quaerat delectus.
+              </p>
+              <p class="mb-4">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Possimus, accusamus magni
+              </p>
+
+              <div class="d-flex flex-wrap gap-2">
+                <span class="badge bg-primary px-3 py-2">Inovação</span>
+                <span class="badge bg-secondary px-3 py-2">Qualidade</span>
+                <span class="badge bg-success px-3 py-2">Compromisso</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile -->
+          <div class="col-lg-6">
+            <div class="bg-gray-800 border-0 rounded-3 p-4 shadow">
+              <h3 class="fw-bold mb-4 text-success">Desenvolvedor</h3>
+              <div
+                class="d-flex flex-column flex-md-row align-items-center gap-4"
+              >
+                <img
+                  src="assets/images/perfil.png"
+                  alt="Foto de perfil"
+                  class="rounded-circle border border-3 border-success"
+                  style="width: 150px; height: 150px; object-fit: cover"
+                />
+
+                <div>
+                  <h4 class="fw-bold mb-3">Nicolas Diderot Fontenele Bean</h4>
+                  <ul class="list-unstyled">
+                    <li class="mb-2 d-flex align-items-center gap-2">
+                      <img
+                        src="assets/images/grad.svg"
+                        alt="Formação"
+                        width="20"
+                      />
+                      Bacharelado em Ciência da Computação
+                    </li>
+                    <li class="mb-2 d-flex align-items-center gap-2">
+                      <img
+                        src="assets/images/clock.svg"
+                        alt="Turno"
+                        width="20"
+                      />
+                      Turno: Manhã
+                    </li>
+                  </ul>
+
+                  <!-- <div class="mt-4">
+                    <h5 class="fw-bold mb-3">Conecte-se</h5>
+                    <div class="d-flex gap-3">
+                      <a href="#" class="text-white text-decoration-none">
+                        <img
+                          src="assets/images/instagram.svg"
+                          alt="Instagram"
+                          width="24"
+                        />
+                      </a>
+                      <a href="#" class="text-white text-decoration-none">
+                        <img
+                          src="assets/images/x.svg"
+                          alt="Twitter"
+                          width="24"
+                        />
+                      </a>
+                      <a href="#" class="text-white text-decoration-none">
+                        <img
+                          src="assets/images/linkedin.svg"
+                          alt="LinkedIn"
+                          width="24"
+                        />
+                      </a>
+                      <a href="#" class="text-white text-decoration-none">
+                        <img
+                          src="assets/images/github.svg"
+                          alt="GitHub"
+                          width="24"
+                        />
+                      </a>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="bg-dark text-white py-4">
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- Redes Sociais -->
+          <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+            <h3 class="h5 text-uppercase mb-3">
+              Fique atento às nossas redes sociais
+            </h3>
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item me-3">
+                <a href="#" class="text-white text-decoration-none">
+                  <img
+                    src="assets/images/instagram.svg"
+                    alt="Instagram"
+                    width="28"
+                    class="img-fluid"
+                  />
+                </a>
+              </li>
+              <li class="list-inline-item me-3">
+                <a href="#" class="text-white text-decoration-none">
+                  <img
+                    src="assets/images/x.png"
+                    alt="Twitter"
+                    width="28"
+                    class="img-fluid"
+                  />
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="text-white text-decoration-none">
+                  <img
+                    src="assets/images/youtube.svg"
+                    alt="YouTube"
+                    width="28"
+                    class="img-fluid"
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Logo -->
+          <div class="col-md-3 text-center mb-3 mb-md-0">
+            <img
+              src="assets/images/logoSilhueta.png"
+              alt="Logo"
+              class="img-fluid"
+              style="max-height: 60px"
+            />
+          </div>
+
+          <!-- Copyright -->
+          <div class="col-md-3 text-center text-md-end">
+            <small class="d-block"
+              >Desenvolvido por Nicolas Diderot Fontenele Bean</small
+            >
+            <small class="d-block">© 2025 Todos os direitos reservados</small>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        loadCarouselData();
+        loadNewsData();
+
+        const termo = getSearchTermFromURL();
+        if (termo) {
+          const input = document.getElementById("searchInput");
+          if (input) input.value = termo;
+        }
+      });
+
+      function getSearchTermFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get("search")?.toLowerCase() || null;
+      }
+
+      async function loadNewsData() {
+        try {
+          const response = await fetch("http://localhost:3000/noticias");
+          if (!response.ok) throw new Error("Erro ao carregar notícias");
+          const newsData = await response.json();
+
+          const searchTerm = getSearchTermFromURL();
+          if (searchTerm) {
+            const filtradas = newsData.filter((noticia) => {
+              const titulo = noticia.titulo.toLowerCase();
+              const texto = noticia.texto.toLowerCase();
+              return titulo.includes(searchTerm) || texto.includes(searchTerm);
+            });
+            carregarNoticias(filtradas);
+          } else {
+            carregarNoticias(newsData);
+          }
+        } catch (error) {
+          console.error("Erro ao carregar notícias:", error);
+        }
+      }
+    </script>
+  </body>
+</html>
