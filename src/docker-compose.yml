@@ -1,9 +1,9 @@
 services:
   nfNews:
     container_name: nfNews
-    images: postgres
+    image: postgres
     ports:
-      -${DB_PORT}:5432
+      - ${DB_PORT}:5432
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
